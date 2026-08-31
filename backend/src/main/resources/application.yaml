@@ -1,17 +1,22 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/bus_booking
+    url: jdbc:postgresql://localhost:5432/bus_booking?options=-c%20TimeZone=Asia/Ho_Chi_Minh
     username: postgres
-    password: postgres
+    password: your_password
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     show-sql: true
+    defer-datasource-initialization: true
     properties:
       hibernate:
         format_sql: true
         dialect: org.hibernate.dialect.PostgreSQLDialect
         jdbc:
           time_zone: Asia/Ho_Chi_Minh
+
+  sql:
+    init:
+      mode: never  # DB da duoc tao bang + seed data qua Docker init (db-init/), khong can Spring chay lai

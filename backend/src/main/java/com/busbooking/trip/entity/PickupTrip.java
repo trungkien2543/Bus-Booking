@@ -5,6 +5,8 @@ import com.busbooking.route.entity.Route;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.UUID;
+
 @Entity
 @Table(name = "pick_up_trip")
 @Getter
@@ -15,8 +17,9 @@ import lombok.*;
 public class PickupTrip {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.UUID)
+    @Column(columnDefinition = "uuid", updatable = false, nullable = false)
+    private UUID id;
 
     private String name;
 

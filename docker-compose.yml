@@ -1,16 +1,24 @@
 services:
   postgres:
-    image: postgres:17
-    container_name: bus-booking-postgres
+    image: postgres:16-alpine
+    container_name: bus_booking_postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: bus_booking
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
+      TZ: Asia/Ho_Chi_Minh
+      PGTZ: Asia/Ho_Chi_Minh
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+      - ./db-init:/docker-entrypoint-initdb.d
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d bus_booking"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
 
 volumes:
   postgres_data:
