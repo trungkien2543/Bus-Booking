@@ -1,4 +1,4 @@
-package com.busticket.pickuptrip;
+package com.busticket.pickupTrip;
 
 import com.busticket.city.City;
 import com.busticket.route.Route;

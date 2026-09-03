@@ -1,4 +1,4 @@
-package com.busticket.pickuptrip;
+package com.busticket.pickupTrip;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
