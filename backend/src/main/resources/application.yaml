@@ -2,7 +2,7 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/bus_booking?options=-c%20TimeZone=Asia/Ho_Chi_Minh
     username: postgres
-    password: your_password
+    password: postgres
     driver-class-name: org.postgresql.Driver
 
   jpa:
@@ -19,4 +19,4 @@ spring:
 
   sql:
     init:
-      mode: never  # DB da duoc tao bang + seed data qua Docker init (db-init/), khong can Spring chay lai
+      mode: never  # DB da duoc tao bang + seed data qua Docker init   (db-init/), khong can Spring chay lai

@@ -1,5 +1,6 @@
 package com.busticket.city;
 
+import com.busticket.city.dto.CityResponse;
 import org.mapstruct.Mapper;
 
 import java.util.List;

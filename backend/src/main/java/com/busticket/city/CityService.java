@@ -1,5 +1,6 @@
 package com.busticket.city;
 
+import com.busticket.city.dto.CityResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

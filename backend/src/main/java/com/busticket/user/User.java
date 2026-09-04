@@ -1,10 +1,8 @@
 package com.busticket.user;
 
-import com.busticket.booking.Booking;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -31,6 +29,5 @@ public class User {
 
     private String status;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
-    private List<Booking> bookings;
+    // booking duoc quan ly boi package booking, khong khai bao @OneToMany nguoc lai o day
 }

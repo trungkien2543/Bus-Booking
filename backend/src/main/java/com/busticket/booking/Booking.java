@@ -1,6 +1,5 @@
 package com.busticket.booking;
 
-import com.busticket.payment.Payment;
 import com.busticket.pickupTrip.PickupTrip;
 import com.busticket.trip.Trip;
 import com.busticket.user.User;
@@ -8,7 +7,6 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -46,9 +44,6 @@ public class Booking {
     @JoinColumn(name = "drop_off_point_id")
     private PickupTrip dropOffPoint;
 
-    @OneToMany(mappedBy = "booking", cascade = CascadeType.ALL)
-    private List<BookingSeat> bookingSeats;
-
-    @OneToOne(mappedBy = "booking", cascade = CascadeType.ALL)
-    private Payment payment;
+    // bookingSeat va payment duoc quan ly boi package tuong ung,
+    // khong khai bao @OneToMany / @OneToOne nguoc lai o day
 }

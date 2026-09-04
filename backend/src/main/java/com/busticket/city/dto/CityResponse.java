@@ -1,4 +1,4 @@
-package com.busticket.city;
+package com.busticket.city.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
