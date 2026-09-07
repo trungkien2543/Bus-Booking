@@ -1,11 +1,8 @@
 package com.busticket.city;
 
-import com.busticket.route.Route;
-import com.busticket.pickupTrip.PickupTrip;
 import jakarta.persistence.*;
 import lombok.*;
 
-import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -30,12 +27,4 @@ public class City {
 
     private String status;
 
-    @OneToMany(mappedBy = "originCity", cascade = CascadeType.ALL)
-    private List<Route> routesAsOrigin;
-
-    @OneToMany(mappedBy = "destinationCity", cascade = CascadeType.ALL)
-    private List<Route> routesAsDestination;
-
-    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-    private List<PickupTrip> pickupTrips;
 }

@@ -14,6 +14,6 @@ public class BookingResponse {
     private LocalDateTime expiresAt;
     private UUID tripId;
     private UUID userId;
-    private UUID pickUpPointId;
-    private UUID dropOffPointId;
+    private UUID pickUpStopId;
+    private UUID dropOffStopId;
 }

@@ -1,7 +1,7 @@
 package com.busticket.booking;
 
-import com.busticket.pickupTrip.PickupTrip;
 import com.busticket.trip.Trip;
+import com.busticket.tripstop.TripStop;
 import com.busticket.user.User;
 import jakarta.persistence.*;
 import lombok.*;
@@ -36,13 +36,15 @@ public class Booking {
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
 
+    // Tro toi TRIP_STOP (khong phai Location) vi booking can biet chinh xac
+    // GIO don/tra, chi co o TripStop, khong co o Location.
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "pick_up_point_id")
-    private PickupTrip pickUpPoint;
+    @JoinColumn(name = "pick_up_stop_id")
+    private TripStop pickUpStop;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "drop_off_point_id")
-    private PickupTrip dropOffPoint;
+    @JoinColumn(name = "drop_off_stop_id")
+    private TripStop dropOffStop;
 
     // bookingSeat va payment duoc quan ly boi package tuong ung,
     // khong khai bao @OneToMany / @OneToOne nguoc lai o day

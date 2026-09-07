@@ -6,9 +6,11 @@
 DROP TABLE IF EXISTS payment CASCADE;
 DROP TABLE IF EXISTS booking_seat CASCADE;
 DROP TABLE IF EXISTS booking CASCADE;
+DROP TABLE IF EXISTS trip_stop CASCADE;
+DROP TABLE IF EXISTS route_stop_template CASCADE;
 DROP TABLE IF EXISTS app_user CASCADE;
+DROP TABLE IF EXISTS location CASCADE;
 DROP TABLE IF EXISTS trip CASCADE;
-DROP TABLE IF EXISTS pick_up_trip CASCADE;
 DROP TABLE IF EXISTS route CASCADE;
 DROP TABLE IF EXISTS bus_seat CASCADE;
 DROP TABLE IF EXISTS bus CASCADE;
@@ -78,19 +80,6 @@ CREATE TABLE route (
 );
 
 -- ==========================================
--- PICK_UP_TRIP
--- ==========================================
-CREATE TABLE pick_up_trip (
-    id       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
-    name     VARCHAR(150),
-    address  VARCHAR(255),
-    status   VARCHAR(20),
-    map_url  VARCHAR(255),
-    city_id  UUID NOT NULL REFERENCES city(id),
-    route_id UUID NOT NULL REFERENCES route(id) ON DELETE CASCADE
-);
-
--- ==========================================
 -- TRIP
 -- ==========================================
 CREATE TABLE trip (
@@ -101,6 +90,49 @@ CREATE TABLE trip (
     arrival_time    TIMESTAMP NOT NULL,
     route_id        UUID NOT NULL REFERENCES route(id),
     bus_id          UUID NOT NULL REFERENCES bus(id)
+);
+
+-- ==========================================
+-- LOCATION (du lieu goc - diem don/tra vat ly, doc lap, dung lai duoc
+-- cho nhieu route/trip khac nhau. KHONG gan voi route hay trip nao ca)
+-- ==========================================
+CREATE TABLE location (
+    id       UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    city_id  UUID NOT NULL REFERENCES city(id),
+    name     VARCHAR(150) NOT NULL,
+    address  VARCHAR(255),
+    map_url  VARCHAR(255),
+    status   VARCHAR(20)
+);
+
+-- ==========================================
+-- ROUTE_STOP_TEMPLATE (mau lich trinh diem dung cho 1 route -
+-- de admin khong phai nhap tay tung diem cho tung trip.
+-- offset_minutes = do lech thoi gian so voi departure_time cua trip,
+-- KHONG luu gio cung)
+-- ==========================================
+CREATE TABLE route_stop_template (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    route_id        UUID NOT NULL REFERENCES route(id) ON DELETE CASCADE,
+    location_id     UUID NOT NULL REFERENCES location(id),
+    stop_type       VARCHAR(10) NOT NULL,  -- PICKUP hoac DROPOFF
+    offset_minutes  INT NOT NULL,
+    sequence_order  INT NOT NULL
+);
+
+-- ==========================================
+-- TRIP_STOP (du lieu THAT, thuoc ve 1 trip cu the - duoc he thong
+-- tu sinh tu route_stop_template khi tao trip moi. Booking se
+-- tham chieu truc tiep vao day, KHONG tham chieu vao location)
+-- ==========================================
+CREATE TABLE trip_stop (
+    id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+    trip_id         UUID NOT NULL REFERENCES trip(id) ON DELETE CASCADE,
+    location_id     UUID NOT NULL REFERENCES location(id),
+    stop_type       VARCHAR(10) NOT NULL,  -- PICKUP hoac DROPOFF
+    stop_time       TIMESTAMP NOT NULL,
+    sequence_order  INT NOT NULL,
+    status          VARCHAR(20)
 );
 
 -- ==========================================
@@ -115,7 +147,9 @@ CREATE TABLE app_user (
 );
 
 -- ==========================================
--- BOOKING
+-- BOOKING (pick_up_point_id / drop_off_point_id doi ten thanh
+-- pick_up_stop_id / drop_off_stop_id, tro toi TRIP_STOP thay vi Location,
+-- vi booking can biet chinh xac GIO don, khong chi ten dia diem)
 -- ==========================================
 CREATE TABLE booking (
     id                UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -123,8 +157,8 @@ CREATE TABLE booking (
     expires_at        TIMESTAMP,
     trip_id           UUID NOT NULL REFERENCES trip(id),
     user_id           UUID NOT NULL REFERENCES app_user(id),
-    pick_up_point_id  UUID REFERENCES pick_up_trip(id),
-    drop_off_point_id UUID REFERENCES pick_up_trip(id)
+    pick_up_stop_id   UUID REFERENCES trip_stop(id),
+    drop_off_stop_id  UUID REFERENCES trip_stop(id)
 );
 
 -- ==========================================
