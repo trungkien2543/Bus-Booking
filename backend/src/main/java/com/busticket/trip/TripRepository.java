@@ -12,11 +12,9 @@ import java.util.UUID;
 public interface TripRepository extends JpaRepository<Trip, UUID> {
 
     /**
-     * Tim cac trip SCHEDULED theo cap thanh pho di - den, trong khoang [startOfDay, endOfDay).
-     * Dung khoang thoi gian (thay vi CAST departure_time AS date) de co the tan dung
-     * index tren cot departure_time khi ban tu tao index sau nay.
+     * Phan chung cua ca 2 query - tach ra constant de tranh lap code JPQL.
      */
-    @Query("""
+    String SEARCH_SELECT = """
             SELECT new com.busticket.trip.dto.TripSearchResponse(
                 t.id,
                 t.departureTime,
@@ -36,12 +34,29 @@ public interface TripRepository extends JpaRepository<Trip, UUID> {
             FROM Trip t
             WHERE t.route.originCity.id = :originCityId
               AND t.route.destinationCity.id = :destinationCityId
+              AND t.status = 'SCHEDULED'
+            """;
+
+    /**
+     * Tim trip theo cap thanh pho di - den, KHONG loc theo ngay
+     * (dung khi departureDate khong duoc truyen vao).
+     */
+    @Query(SEARCH_SELECT + " ORDER BY t.departureTime ASC")
+    List<TripSearchResponse> searchTripsAllDates(
+            @Param("originCityId") UUID originCityId,
+            @Param("destinationCityId") UUID destinationCityId
+    );
+
+    /**
+     * Tim trip theo cap thanh pho di - den, CO loc theo khoang ngay
+     * [startOfDay, endOfDay). Dung khi departureDate duoc truyen vao.
+     */
+    @Query(SEARCH_SELECT + """
               AND t.departureTime >= :startOfDay
               AND t.departureTime < :endOfDay
-              AND t.status = 'SCHEDULED'
             ORDER BY t.departureTime ASC
             """)
-    List<TripSearchResponse> searchTrips(
+    List<TripSearchResponse> searchTripsByDate(
             @Param("originCityId") UUID originCityId,
             @Param("destinationCityId") UUID destinationCityId,
             @Param("startOfDay") LocalDateTime startOfDay,
