@@ -1,7 +1,7 @@
 package com.busticket.trip;
 
 import com.busticket.trip.dto.TripResponse;
-import com.busticket.trip.dto.TripSearchResponse;
+import com.busticket.trip.dto.TripSearchResultResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
@@ -29,22 +29,24 @@ public class TripController {
         return tripService.getAllTrips();
     }
 
-
     /**
      * GET /api/trips/search?originCityId=...&destinationCityId=...&departureDate=2026-09-10
-     * departureDate la OPTIONAL - bo qua se tra ve tat ca trip cua cap
-     * diem di/diem den do, khong loc theo ngay.
+     * -> tim 1 chieu (khong co returnDate)
+     *
+     * GET /api/trips/search?originCityId=...&destinationCityId=...&departureDate=2026-09-10&returnDate=2026-09-12
+     * -> tim khu hoi: chieu di (origin->destination) vao departureDate,
+     *    chieu ve (destination->origin) vao returnDate
      */
     @GetMapping("/search")
-    public ResponseEntity<List<TripSearchResponse>> search(
+    public ResponseEntity<TripSearchResultResponse> search(
             @RequestParam UUID originCityId,
             @RequestParam UUID destinationCityId,
-            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate
+            @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate departureDate,
+            @RequestParam(required = false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate returnDate
     ) {
-        List<TripSearchResponse> results = tripService.searchTrips(originCityId, destinationCityId, departureDate);
-        return ResponseEntity.ok(results);
+        TripSearchResultResponse result = tripService.searchTrips(
+                originCityId, destinationCityId, departureDate, returnDate
+        );
+        return ResponseEntity.ok(result);
     }
-
-
-
 }
