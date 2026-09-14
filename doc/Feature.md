@@ -1,0 +1,1 @@
+1. Đánh index để tối ưu hóa cho việc tìm kiếm trip

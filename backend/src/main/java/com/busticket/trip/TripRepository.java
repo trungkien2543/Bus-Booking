@@ -75,7 +75,7 @@ public interface TripRepository extends JpaRepository<Trip, UUID> {
                 STRING_AGG(DISTINCT CASE WHEN ts.stop_type = 'PICKUP' THEN l.name END, ',') AS pickupPointsRaw,
                 STRING_AGG(DISTINCT CASE WHEN ts.stop_type = 'DROPOFF' THEN l.name END, ',') AS dropoffPointsRaw
             FROM trip_stop ts
-            JOIN location l ON l.id = ts.location_id
+            JOIN location l ON ts.location_id = l.id
             WHERE ts.trip_id IN :tripIds
             GROUP BY ts.trip_id
             """, nativeQuery = true)

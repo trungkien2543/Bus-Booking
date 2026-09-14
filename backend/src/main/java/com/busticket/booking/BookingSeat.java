@@ -8,15 +8,17 @@ import lombok.*;
 import java.math.BigDecimal;
 import java.util.UUID;
 
+/**
+ * UNIQUE(trip_id, bus_seat_id) - dam bao 1 ghe khong the bi dat 2 lan
+ * cho cung 1 trip, du co 2 request insert cung luc (day la lop bao ve
+ * cuoi cung o tang DB, phong khi Redis lock bi mat/loi).
+ * LUU Y: khi 1 booking bi CANCELLED, phai XOA han dong booking_seat
+ * tuong ung (khong chi doi status), neu khong ghe se bi khoa vinh vien.
+ */
 @Entity
 @Table(
         name = "booking_seat",
-        uniqueConstraints = {
-                @UniqueConstraint(
-                        name = "uk_booking_seat_trip_seat",
-                        columnNames = {"trip_id", "bus_seat_id"}
-                )
-        }
+        uniqueConstraints = @UniqueConstraint(columnNames = {"trip_id", "bus_seat_id"})
 )
 @Getter
 @Setter
@@ -30,7 +32,6 @@ public class BookingSeat {
     @Column(columnDefinition = "uuid", updatable = false, nullable = false)
     private UUID id;
 
-    @Column(nullable = false)
     private BigDecimal price;
 
     @ManyToOne(fetch = FetchType.LAZY)
@@ -38,10 +39,10 @@ public class BookingSeat {
     private Booking booking;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "trip_id", nullable = false)
-    private Trip trip;
-
-    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "bus_seat_id", nullable = false)
     private BusSeat busSeat;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "trip_id", nullable = false)
+    private Trip trip;
 }
