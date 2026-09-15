@@ -41,7 +41,7 @@ SELECT
     r.id,
     b.id
 FROM route r
-CROSS JOIN generate_series(1, 5) AS trip_seq
+CROSS JOIN generate_series(1, 50) AS trip_seq
 CROSS JOIN LATERAL (SELECT id FROM bus ORDER BY random() LIMIT 1) AS b
 CROSS JOIN LATERAL (
     SELECT (CURRENT_DATE + (floor(random() * 60))::int * INTERVAL '1 day'
@@ -56,8 +56,8 @@ CROSS JOIN LATERAL (
 INSERT INTO location (city_id, name, address, map_url, status)
 SELECT
     c.id,
-    'Ben xe trung tam ' || c.name,
-    'Trung tam thanh pho ' || c.name,
+    'Bến xe trung tâm ' || c.name,
+    'Trung tâm thành phố ' || c.name,
     'https://maps.google.com/?q=' || replace(lower(c.name), ' ', '-'),
     'ACTIVE'
 FROM city c

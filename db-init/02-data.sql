@@ -12,58 +12,58 @@
 -- CITY (34 tinh/thanh sau sap nhap, hieu luc 12/6/2025)
 -- ==========================================
 INSERT INTO city (id, code, name, status) VALUES
-('00000000-0000-1000-0000-000000000001', 'HN',  'Ha Noi', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000002', 'HUE', 'Hue', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000003', 'LCH', 'Lai Chau', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000004', 'DBI', 'Dien Bien', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000005', 'SLA', 'Son La', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000006', 'LSO', 'Lang Son', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000007', 'QNI', 'Quang Ninh', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000008', 'THA', 'Thanh Hoa', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000009', 'NAN', 'Nghe An', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000a', 'HTI', 'Ha Tinh', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000b', 'CBA', 'Cao Bang', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000c', 'TQU', 'Tuyen Quang', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000d', 'LCA', 'Lao Cai', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000e', 'TNG', 'Thai Nguyen', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000000f', 'PTH', 'Phu Tho', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000010', 'BNI', 'Bac Ninh', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000011', 'HYE', 'Hung Yen', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000012', 'HPH', 'Hai Phong', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000013', 'NBI', 'Ninh Binh', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000014', 'QTR', 'Quang Tri', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000015', 'DNA', 'Da Nang', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000016', 'QNG', 'Quang Ngai', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000001', 'HN',  'Hà Nội', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000002', 'HUE', 'Huế', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000003', 'LCH', 'Lai Châu', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000004', 'DBI', 'Điện Biên', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000005', 'SLA', 'Sơn La', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000006', 'LSO', 'Lạng Sơn', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000007', 'QNI', 'Quảng Ninh', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000008', 'THA', 'Thanh Hóa', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000009', 'NAN', 'Nghệ An', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000a', 'HTI', 'Hà Tĩnh', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000b', 'CBA', 'Cao Bằng', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000c', 'TQU', 'Tuyên Quang', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000d', 'LCA', 'Lào Cai', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000e', 'TNG', 'Thái Nguyên', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000000f', 'PTH', 'Phú Thọ', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000010', 'BNI', 'Bắc Ninh', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000011', 'HYE', 'Hưng Yên', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000012', 'HPH', 'Hải Phòng', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000013', 'NBI', 'Ninh Bình', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000014', 'QTR', 'Quảng Trị', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000015', 'DNA', 'Đà Nẵng', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000016', 'QNG', 'Quảng Ngãi', 'ACTIVE'),
 ('00000000-0000-1000-0000-000000000017', 'GLA', 'Gia Lai', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000018', 'KHO', 'Khanh Hoa', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000019', 'LDO', 'Lam Dong', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001a', 'DLA', 'Dak Lak', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001b', 'HCM', 'Ho Chi Minh', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001c', 'DNI', 'Dong Nai', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001d', 'TNI', 'Tay Ninh', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001e', 'CTH', 'Can Tho', 'ACTIVE'),
-('00000000-0000-1000-0000-00000000001f', 'VLO', 'Vinh Long', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000020', 'DTH', 'Dong Thap', 'ACTIVE'),
-('00000000-0000-1000-0000-000000000021', 'CMA', 'Ca Mau', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000018', 'KHO', 'Khánh Hòa', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000019', 'LDO', 'Lâm Đồng', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001a', 'DLA', 'Đắk Lắk', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001b', 'HCM', 'Hồ Chí Minh', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001c', 'DNI', 'Đồng Nai', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001d', 'TNI', 'Tây Ninh', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001e', 'CTH', 'Cần Thơ', 'ACTIVE'),
+('00000000-0000-1000-0000-00000000001f', 'VLO', 'Vĩnh Long', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000020', 'DTH', 'Đồng Tháp', 'ACTIVE'),
+('00000000-0000-1000-0000-000000000021', 'CMA', 'Cà Mau', 'ACTIVE'),
 ('00000000-0000-1000-0000-000000000022', 'AGI', 'An Giang', 'ACTIVE');
 
 -- ==========================================
 -- OPERATOR
 -- ==========================================
 INSERT INTO operator (id, name, status, phone, description, address, email) VALUES
-('00000000-0000-2000-0000-000000000001', 'Phuong Trang', 'ACTIVE', '0900000001', 'Nha xe uy tin, tuyen duong toan quoc', '123 Le Hong Phong, HCM', 'contact@phuongtrang.vn'),
-('00000000-0000-2000-0000-000000000002', 'Thanh Buoi', 'ACTIVE', '0900000002', 'Chuyen tuyen HCM - Lam Dong', '45 Nguyen Van Troi, HCM', 'contact@thanhbuoi.vn'),
-('00000000-0000-2000-0000-000000000003', 'Hoang Long', 'ACTIVE', '0900000003', 'Chuyen tuyen HCM - Ha Noi', '78 Giai Phong, Ha Noi', 'contact@hoanglong.vn');
+('00000000-0000-2000-0000-000000000001', 'Phương Trang', 'ACTIVE', '0900000001', 'Nhà xe uy tín, tuyến đường toàn quốc', '123 Lê Hồng Phong, TP.HCM', 'contact@phuongtrang.vn'),
+('00000000-0000-2000-0000-000000000002', 'Thành Bưởi', 'ACTIVE', '0900000002', 'Chuyên tuyến TP.HCM - Lâm Đồng', '45 Nguyễn Văn Trỗi, TP.HCM', 'contact@thanhbuoi.vn'),
+('00000000-0000-2000-0000-000000000003', 'Hoàng Long', 'ACTIVE', '0900000003', 'Chuyên tuyến TP.HCM - Hà Nội', '78 Giải Phóng, Hà Nội', 'contact@hoanglong.vn');
 
 -- ==========================================
 -- BUS
 -- ==========================================
 INSERT INTO bus (id, bus_type, seat_count, license_plate, status, brand, year, operator_id) VALUES
-('00000000-0000-3000-0000-000000000001', 'Giuong nam 40 cho', 40, '51B-12345', 'ACTIVE', 'Thaco', 2022, '00000000-0000-2000-0000-000000000001'),
-('00000000-0000-3000-0000-000000000002', 'Ghe ngoi 45 cho', 45, '51B-67890', 'ACTIVE', 'Hyundai', 2021, '00000000-0000-2000-0000-000000000001'),
-('00000000-0000-3000-0000-000000000003', 'Limousine 22 cho', 22, '49A-11111', 'ACTIVE', 'Ford', 2023, '00000000-0000-2000-0000-000000000002'),
-('00000000-0000-3000-0000-000000000004', 'Giuong nam 40 cho', 40, '30A-22222', 'ACTIVE', 'Thaco', 2020, '00000000-0000-2000-0000-000000000003'),
-('00000000-0000-3000-0000-000000000005', 'Ghe ngoi 45 cho', 45, '30A-33333', 'ACTIVE', 'Hyundai', 2022, '00000000-0000-2000-0000-000000000003');
+('00000000-0000-3000-0000-000000000001', 'Giường nằm 40 chỗ', 40, '51B-12345', 'ACTIVE', 'Thaco', 2022, '00000000-0000-2000-0000-000000000001'),
+('00000000-0000-3000-0000-000000000002', 'Ghế ngồi 45 chỗ', 45, '51B-67890', 'ACTIVE', 'Hyundai', 2021, '00000000-0000-2000-0000-000000000001'),
+('00000000-0000-3000-0000-000000000003', 'Limousine 22 chỗ', 22, '49A-11111', 'ACTIVE', 'Ford', 2023, '00000000-0000-2000-0000-000000000002'),
+('00000000-0000-3000-0000-000000000004', 'Giường nằm 40 chỗ', 40, '30A-22222', 'ACTIVE', 'Thaco', 2020, '00000000-0000-2000-0000-000000000003'),
+('00000000-0000-3000-0000-000000000005', 'Ghế ngồi 45 chỗ', 45, '30A-33333', 'ACTIVE', 'Hyundai', 2022, '00000000-0000-2000-0000-000000000003');
 
 -- ==========================================
 -- BUS_SEAT
@@ -122,13 +122,13 @@ INSERT INTO trip (id, status, price, departure_time, arrival_time, route_id, bus
 -- LOCATION (du lieu goc - moi diem chi 1 dong duy nhat, dung lai duoc)
 -- ==========================================
 INSERT INTO location (id, city_id, name, address, map_url, status) VALUES
-('00000000-0000-c000-0000-000000000001', (SELECT id FROM city WHERE code='HCM'), 'Ben xe Mien Dong', '292 Dinh Bo Linh, Binh Thanh, HCM', 'https://maps.google.com/?q=ben-xe-mien-dong', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000002', (SELECT id FROM city WHERE code='HN'),  'Ben xe Giap Bat', 'Giai Phong, Hoang Mai, Ha Noi', 'https://maps.google.com/?q=ben-xe-giap-bat', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000003', (SELECT id FROM city WHERE code='HCM'), 'Van phong Thanh Buoi Q1', '266 Le Hong Phong, HCM', 'https://maps.google.com/?q=thanh-buoi-q1', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000004', (SELECT id FROM city WHERE code='LDO'), 'Ben xe Da Lat', '01 Ba Trieu, Da Lat, Lam Dong', 'https://maps.google.com/?q=ben-xe-da-lat', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000005', (SELECT id FROM city WHERE code='DNA'), 'Ben xe Da Nang', '33 Dien Bien Phu, Da Nang', 'https://maps.google.com/?q=ben-xe-da-nang', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000006', (SELECT id FROM city WHERE code='HCM'), 'Ben xe Mien Tay', '395 Kinh Duong Vuong, HCM', 'https://maps.google.com/?q=ben-xe-mien-tay', 'ACTIVE'),
-('00000000-0000-c000-0000-000000000007', (SELECT id FROM city WHERE code='CTH'), 'Ben xe Can Tho', '36 Nguyen Van Linh, Can Tho', 'https://maps.google.com/?q=ben-xe-can-tho', 'ACTIVE');
+('00000000-0000-c000-0000-000000000001', (SELECT id FROM city WHERE code='HCM'), 'Bến xe Miền Đông', '292 Đinh Bộ Lĩnh, Bình Thạnh, TP.HCM', 'https://maps.google.com/?q=ben-xe-mien-dong', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000002', (SELECT id FROM city WHERE code='HN'),  'Bến xe Giáp Bát', 'Giải Phóng, Hoàng Mai, Hà Nội', 'https://maps.google.com/?q=ben-xe-giap-bat', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000003', (SELECT id FROM city WHERE code='HCM'), 'Văn phòng Thành Bưởi Q1', '266 Lê Hồng Phong, TP.HCM', 'https://maps.google.com/?q=thanh-buoi-q1', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000004', (SELECT id FROM city WHERE code='LDO'), 'Bến xe Đà Lạt', '01 Bà Triệu, Đà Lạt, Lâm Đồng', 'https://maps.google.com/?q=ben-xe-da-lat', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000005', (SELECT id FROM city WHERE code='DNA'), 'Bến xe Đà Nẵng', '33 Điện Biên Phủ, Đà Nẵng', 'https://maps.google.com/?q=ben-xe-da-nang', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000006', (SELECT id FROM city WHERE code='HCM'), 'Bến xe Miền Tây', '395 Kinh Dương Vương, TP.HCM', 'https://maps.google.com/?q=ben-xe-mien-tay', 'ACTIVE'),
+('00000000-0000-c000-0000-000000000007', (SELECT id FROM city WHERE code='CTH'), 'Bến xe Cần Thơ', '36 Nguyễn Văn Linh, Cần Thơ', 'https://maps.google.com/?q=ben-xe-can-tho', 'ACTIVE');
 
 -- ==========================================
 -- ROUTE_STOP_TEMPLATE (mau lich trinh cho tung route, offset tinh bang phut)
@@ -154,9 +154,7 @@ INSERT INTO route_stop_template (id, route_id, location_id, stop_type, offset_mi
 ('00000000-0000-d000-0000-00000000000c', '00000000-0000-5000-0000-000000000006', '00000000-0000-c000-0000-000000000007', 'DROPOFF', 210, 2);
 
 -- ==========================================
--- TRIP_STOP (du lieu THAT cua tung trip - o day nhap tay khop voi
--- departure_time/arrival_time da dinh nghia o tren; ve sau se duoc
--- he thong tu sinh tu route_stop_template khi tao trip moi)
+-- TRIP_STOP (du lieu THAT cua tung trip)
 -- ==========================================
 INSERT INTO trip_stop (id, trip_id, location_id, stop_type, stop_time, sequence_order, status) VALUES
 -- Trip 1 (HCM -> HN, dep 2026-09-10 20:00)
@@ -188,13 +186,13 @@ INSERT INTO trip_stop (id, trip_id, location_id, stop_type, stop_time, sequence_
 -- APP_USER
 -- ==========================================
 INSERT INTO app_user (id, email, name, password, status) VALUES
-('00000000-0000-8000-0000-000000000001', 'an.nguyen@example.com', 'Nguyen Van An', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1', 'ACTIVE'),
-('00000000-0000-8000-0000-000000000002', 'binh.tran@example.com', 'Tran Thi Binh', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2', 'ACTIVE'),
-('00000000-0000-8000-0000-000000000003', 'cuong.le@example.com', 'Le Van Cuong', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ3', 'ACTIVE'),
-('00000000-0000-8000-0000-000000000004', 'dung.pham@example.com', 'Pham Thi Dung', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ4', 'INACTIVE');
+('00000000-0000-8000-0000-000000000001', 'an.nguyen@example.com', 'Nguyễn Văn An', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1', 'ACTIVE'),
+('00000000-0000-8000-0000-000000000002', 'binh.tran@example.com', 'Trần Thị Bình', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ2', 'ACTIVE'),
+('00000000-0000-8000-0000-000000000003', 'cuong.le@example.com', 'Lê Văn Cường', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ3', 'ACTIVE'),
+('00000000-0000-8000-0000-000000000004', 'dung.pham@example.com', 'Phạm Thị Dung', '$2a$10$abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ4', 'INACTIVE');
 
 -- ==========================================
--- BOOKING (pick_up_stop_id / drop_off_stop_id tro toi TRIP_STOP)
+-- BOOKING
 -- ==========================================
 INSERT INTO booking (id, status, expires_at, trip_id, user_id, pick_up_stop_id, drop_off_stop_id) VALUES
 ('00000000-0000-9000-0000-000000000001', 'CONFIRMED', NULL, '00000000-0000-7000-0000-000000000001', '00000000-0000-8000-0000-000000000001', '00000000-0000-e000-0000-000000000001', '00000000-0000-e000-0000-000000000002'),
