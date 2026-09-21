@@ -12,6 +12,18 @@ export async function getCities() {
 }
 
 /**
+ * Lay top N route co nhieu chuyen nhat, dung cho carousel
+ * "Tuyen duong pho bien" o trang chu.
+ */
+export async function getPopularRoutes(limit = 12) {
+  const res = await fetch(`${API_BASE_URL}/trips/popular-routes?limit=${limit}`);
+  if (!res.ok) {
+    throw new Error("Không thể tải danh sách tuyến phổ biến");
+  }
+  return res.json();
+}
+
+/**
  * Tim kiem chuyen di. returnDate la optional - chi truyen khi
  * nguoi dung muon tim khu hoi.
  */

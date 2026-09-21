@@ -27,4 +27,9 @@ public class City {
 
     private String status;
 
+    @Column(name = "image_url", length = 500)
+    private String imageUrl;
+
+    // route va location duoc quan ly boi package tuong ung,
+    // khong khai bao @OneToMany nguoc lai o day
 }

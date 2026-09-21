@@ -79,7 +79,7 @@ function App() {
             Hàng nghìn chuyến xe, hàng trăm nhà xe uy tín
           </p>
         </div>
-        <div className="max-w-4xl mx-auto">
+        <div className="max-w-6xl mx-auto relative">
           <TripSearchForm
             cities={cities}
             onSearch={handleSearch}

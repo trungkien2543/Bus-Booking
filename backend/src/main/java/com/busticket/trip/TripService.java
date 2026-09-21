@@ -1,10 +1,12 @@
 package com.busticket.trip;
 
+import com.busticket.trip.dto.PopularRouteResponse;
 import com.busticket.trip.dto.TripResponse;
 import com.busticket.trip.dto.TripSearchResponse;
 import com.busticket.trip.dto.TripSearchResultResponse;
 import com.busticket.trip.record.TripSearchBaseRow;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -23,6 +25,15 @@ public class TripService {
 
     public List<TripResponse> getAllTrips() {
         return tripMapper.toResponseList(tripRepository.findAll());
+    }
+
+
+    /**
+     * Lay top "limit" route co nhieu chuyen SCHEDULED nhat.
+     * Dung cho carousel "Tuyen duong pho bien" o trang chu.
+     */
+    public List<PopularRouteResponse> getPopularRoutes(int limit) {
+        return tripRepository.findPopularRoutes(PageRequest.of(0, limit));
     }
 
     /**
@@ -45,6 +56,7 @@ public class TripService {
 
         return new TripSearchResultResponse(outboundTrips, returnTrips);
     }
+
 
     /**
      * Chay 3 query rieng biet roi rap lai bang Map, thay vi 1 query

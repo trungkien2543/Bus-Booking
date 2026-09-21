@@ -1,5 +1,6 @@
 package com.busticket.trip;
 
+import com.busticket.trip.dto.PopularRouteResponse;
 import com.busticket.trip.dto.TripResponse;
 import com.busticket.trip.dto.TripSearchResultResponse;
 import lombok.RequiredArgsConstructor;
@@ -49,4 +50,18 @@ public class TripController {
         );
         return ResponseEntity.ok(result);
     }
+
+    /**
+     * GET /api/trips/popular-routes?limit=12
+     * -> top N route co nhieu chuyen SCHEDULED nhat, dung cho carousel
+     * "Tuyen duong pho bien" o trang chu. limit mac dinh 12 neu khong truyen.
+     */
+    @GetMapping("/popular-routes")
+    public List<PopularRouteResponse> getPopularRoutes(
+            @RequestParam(defaultValue = "12") int limit
+    ) {
+        return tripService.getPopularRoutes(limit);
+    }
+
+
 }

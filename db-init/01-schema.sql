@@ -24,7 +24,8 @@ CREATE TABLE city (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     code        VARCHAR(20) NOT NULL UNIQUE,
     name        VARCHAR(100) NOT NULL,
-    status      VARCHAR(20)
+    status      VARCHAR(20),
+    image_url   VARCHAR(255)
 );
 
 -- ==========================================
