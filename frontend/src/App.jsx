@@ -3,8 +3,20 @@ import { getCities, searchTrips } from "./api/tripApi";
 import Header from "./components/Header";
 import TripSearchForm from "./components/TripSearchForm";
 import PopularRoutes from "./components/PopularRoutes";
-import FilterSidebar from "./components/FilterSidebar";
+import FilterSidebar, { getDepartureMinutes } from "./components/FilterSidebar";
+import SortBar, { sortTrips } from "./components/SortBar";
 import TripList from "./components/TripList";
+
+const EMPTY_FILTERS = {
+  timeRange: [0, 1440],
+  operators: new Set(),
+  pickupPoints: new Set(),
+  dropoffPoints: new Set(),
+  busTypes: new Set(),
+  seatPositions: new Set(),
+  seatTypes: new Set(),
+  priceRange: null,
+};
 
 function App() {
   const [cities, setCities] = useState([]);
@@ -14,10 +26,8 @@ function App() {
   const [returnTrips, setReturnTrips] = useState(null);
   const [error, setError] = useState("");
 
-  const [filters, setFilters] = useState({
-    operators: new Set(),
-    seatTypes: new Set(),
-  });
+  const [filters, setFilters] = useState(EMPTY_FILTERS);
+  const [sortBy, setSortBy] = useState("departure_asc");
 
   useEffect(() => {
     getCities()
@@ -33,7 +43,7 @@ function App() {
   }) {
     setError("");
     setLoading(true);
-    setFilters({ operators: new Set(), seatTypes: new Set() }); // reset bo loc moi lan tim moi
+    setFilters(EMPTY_FILTERS); // reset bo loc moi lan tim moi
 
     searchTrips(originCityId, destinationCityId, departureDate, returnDate)
       .then((data) => {
@@ -49,21 +59,51 @@ function App() {
   }
 
   // Loc client-side: Set rong = khong loc gi (hien tat ca)
+  // Cac field mang (pickupPoints, dropoffPoints, seatPositions, seatTypes)
+  // dung .some() vi 1 trip co the co nhieu gia tri cho 1 field.
   function applyFilters(trips) {
     if (!trips) return trips;
     return trips.filter((t) => {
+      const departureMin = getDepartureMinutes(t.departureTime);
+      const timeOk =
+        departureMin >= filters.timeRange[0] &&
+        departureMin <= filters.timeRange[1];
       const operatorOk =
         filters.operators.size === 0 || filters.operators.has(t.operatorName);
+      const busTypeOk =
+        filters.busTypes.size === 0 || filters.busTypes.has(t.busType);
+      const priceOk =
+        !filters.priceRange ||
+        (t.price >= filters.priceRange[0] && t.price <= filters.priceRange[1]);
+      const pickupOk =
+        filters.pickupPoints.size === 0 ||
+        (t.pickupPoints || []).some((p) => filters.pickupPoints.has(p));
+      const dropoffOk =
+        filters.dropoffPoints.size === 0 ||
+        (t.dropoffPoints || []).some((p) => filters.dropoffPoints.has(p));
+      const seatPositionOk =
+        filters.seatPositions.size === 0 ||
+        (t.seatPositions || []).some((p) => filters.seatPositions.has(p));
       const seatTypeOk =
         filters.seatTypes.size === 0 ||
         (t.seatTypes || []).some((st) => filters.seatTypes.has(st));
-      return operatorOk && seatTypeOk;
+
+      return (
+        timeOk &&
+        operatorOk &&
+        busTypeOk &&
+        priceOk &&
+        pickupOk &&
+        dropoffOk &&
+        seatPositionOk &&
+        seatTypeOk
+      );
     });
   }
 
   const allTrips = [...outboundTrips, ...(returnTrips || [])];
-  const filteredOutbound = applyFilters(outboundTrips);
-  const filteredReturn = applyFilters(returnTrips);
+  const filteredOutbound = sortTrips(applyFilters(outboundTrips), sortBy);
+  const filteredReturn = sortTrips(applyFilters(returnTrips), sortBy);
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -94,14 +134,17 @@ function App() {
         {/* Chua tim gi -> hien tuyen pho bien */}
         {!searched && <PopularRoutes />}
 
-        {/* Da tim -> hien bo loc (1 cot) + ket qua */}
+        {/* Da tim -> cot trai: sap xep + loc, cot phai: ket qua */}
         {searched && (
           <div className="flex gap-6 -mt-10 items-start">
-            <FilterSidebar
-              allTrips={allTrips}
-              filters={filters}
-              onFilterChange={setFilters}
-            />
+            <div className="w-64 shrink-0 flex flex-col gap-4">
+              <SortBar sortBy={sortBy} onSortChange={setSortBy} />
+              <FilterSidebar
+                allTrips={allTrips}
+                filters={filters}
+                onFilterChange={setFilters}
+              />
+            </div>
             <div className="flex-1 flex gap-6 flex-wrap bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
               <TripList title="Chuyến đi" trips={filteredOutbound} />
               <TripList title="Chuyến về" trips={filteredReturn} />
